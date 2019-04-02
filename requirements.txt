@@ -9,4 +9,3 @@ datetime
 requests
 bs4
 pymongo 
-apscheduler.schedulers.blocking 

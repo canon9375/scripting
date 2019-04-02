@@ -141,6 +141,8 @@ def job2():
             cursor=collection.find()
             for record in cursor:
                 print(record)
+job1()
+job2()
 sched.start()
 # scheduler.add_job(job1, 'interval', minutes=30 )
 # scheduler.add_job(job2, 'interval', minutes=30 )

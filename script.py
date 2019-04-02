@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 import pymongo
 from pymongo import MongoClient   
 from apscheduler.schedulers.blocking import BlockingScheduler
+import os
 sched = BlockingScheduler()
 def getLocationCode(location):
     locaList=[['causewaybay',0],['central',1],['central/western',2],['eastern',3]

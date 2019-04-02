@@ -9,3 +9,4 @@ datetime
 requests
 bs4
 pymongo 
+lxml

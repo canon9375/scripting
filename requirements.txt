@@ -5,7 +5,6 @@ django-heroku
 datetime
 pandas
 numpy 
-os
 time
 datetime
 datetime

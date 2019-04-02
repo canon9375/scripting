@@ -15,6 +15,5 @@ requests
 re
 json
 bs4
-pymongo
-from pymongo import MongoClient   
+pymongo 
 apscheduler.schedulers.blocking 

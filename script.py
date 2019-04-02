@@ -12,6 +12,8 @@ import bs4
 from bs4 import BeautifulSoup
 import pymongo
 from pymongo import MongoClient   
+from apscheduler.schedulers.blocking import BlockingScheduler
+sched = BlockingScheduler()
 def getLocationCode(location):
     locaList=[['causewaybay',0],['central',1],['central/western',2],['eastern',3]
              ,['kwaichung',4],['kwuntong',5],['mongkok',6],['shamshuipo',7]
@@ -22,6 +24,7 @@ def getLocationCode(location):
         if value[0]==location:
             return value[1]
     return 17
+@sched.scheduled_job('interval', minutes=30)
 def job1():
     print ("%s: job"  % time.asctime())
     df = pd.DataFrame(columns=['dateTime','location','NO2','O3','SO2','CO','PM10','PM2.5'])
@@ -94,6 +97,7 @@ def job1():
                 if (collection.find(query).count()==0):
                     inputdata = collection.insert_one(l2)
                 l1.append(l2)
+@sched.scheduled_job('interval', minutes=30)
 def job2():
     res=requests.get('http://www.aqhi.gov.hk/epd/ddata/html/out/aqhi_ind_rss_Eng.xml')
     html = requests.get('http://www.aqhi.gov.hk/epd/ddata/html/out/aqhi_ind_rss_Eng.xml').text.encode('utf-8-sig')
@@ -138,8 +142,7 @@ def job2():
             cursor=collection.find()
             for record in cursor:
                 print(record)
-job2()
-job1()
+sched.start()
 # scheduler.add_job(job1, 'interval', minutes=30 )
 # scheduler.add_job(job2, 'interval', minutes=30 )
 # scheduler.start()

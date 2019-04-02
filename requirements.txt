@@ -1,11 +1,11 @@
 APScheduler==3.0.0
+python-2.7.11
 django
 gunicorn
 django-heroku
 datetime
 pandas
 numpy 
-hashlib
 os
 time
 datetime

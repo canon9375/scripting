@@ -7,7 +7,6 @@ pandas
 numpy 
 datetime
 requests
-json
 bs4
 pymongo 
 apscheduler.schedulers.blocking 

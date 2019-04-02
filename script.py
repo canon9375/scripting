@@ -12,7 +12,6 @@ from bs4 import BeautifulSoup
 import pymongo
 from pymongo import MongoClient   
 from apscheduler.schedulers.blocking import BlockingScheduler
-import os
 sched = BlockingScheduler()
 def getLocationCode(location):
     locaList=[['causewaybay',0],['central',1],['central/western',2],['eastern',3]
@@ -57,14 +56,7 @@ def job1():
             path = './data2/'+i.split('/')[0]+i.split('/')[1]+'.txt'
         else:
             path = './data2/'+i+'.txt'
-        if os.path.exists(path):
-            with open(path,'r') as f:
-                old_md5 = f.read()
-            with open(path,'w') as f:
-                f.write(md5)
-        else:
-            with open(path,'w') as f:
-                f.write(md5)
+       
         if False:
             print('Unchanged data ~')
         else:      
@@ -102,14 +94,7 @@ def job2():
     res=requests.get('http://www.aqhi.gov.hk/epd/ddata/html/out/aqhi_ind_rss_Eng.xml')
     html = requests.get('http://www.aqhi.gov.hk/epd/ddata/html/out/aqhi_ind_rss_Eng.xml').text.encode('utf-8-sig')
     md5 = hashlib.md5(html).hexdigest()
-    if os.path.exists('./data2/old_md5.txt'):
-        with open('./data2/old_md5.txt','r') as f:
-            old_md5 = f.read()
-        with open('./data2/old_md5.txt','w') as f:
-            f.write(md5)
-    else:
-        with open('./data2/old_md5.txt','w') as f:
-            f.write(md5)
+
     if False:
         print('Unchanged data ~')
     else:

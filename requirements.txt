@@ -5,8 +5,6 @@ django-heroku
 datetime
 pandas
 numpy 
-time
-datetime
 datetime
 requests
 re

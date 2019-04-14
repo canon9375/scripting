@@ -1,4 +1,5 @@
 APScheduler==3.0.0
+python_version== '3.6.5'
 django
 gunicorn
 django-heroku
@@ -11,4 +12,4 @@ bs4
 pymongo 
 lxml
 sklearn
-pickle
+

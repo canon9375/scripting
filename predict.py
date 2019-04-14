@@ -60,7 +60,7 @@ def genAqhiByL(location):
     li2.append(li)
     sc = StandardScaler()
     li2=sc.fit_transform(li2)
-    with open('future1_Model.pickle', 'rb') as f:
+    with open(f'future1_Model.pickle', 'rb') as f:
         random = pickle.load(f)
         preData = {"dateTime":datetime.datetime.now() + timedelta(hours=1),"location":location,
                     "locationCode":lcode,"paqhi":str(random.predict(li2)[0])}

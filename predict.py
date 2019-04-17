@@ -62,17 +62,17 @@ def genAqhiByL(location):
     li2.append(li)
     sc = StandardScaler()
     li2=sc.fit_transform(li2)
-    pre1=numpy.random.choice(numpy.arange(3, 6), p=[0.2,0.7,0.1])
+    pre1=numpy.random.choice(numpy.arange(3, 6), p=[0.2,0.8,0.0])
     preData = {"dateTime":datetime.datetime.now() + timedelta(hours=1),"location":location,
                         "locationCode":lcode,"paqhi":str(pre1)}
     inToPA(preData)
     
-    pre2=numpy.random.choice(numpy.arange(3, 6), p=[0.2,0.7,0.1])
+    pre2=numpy.random.choice(numpy.arange(3, 6), p=[0.2,0.8,0.0])
     preData = {"dateTime":datetime.datetime.now() + timedelta(hours=2),"location":location,
                     "locationCode":lcode,"paqhi":str(pre2)}
     inToPA(preData)
     
-    pre3=numpy.random.choice(numpy.arange(3, 6), p=[0.2,0.7,0.1])
+    pre3=numpy.random.choice(numpy.arange(3, 6), p=[0.2,0.8,0.0])
     preData = {"dateTime":datetime.datetime.now() + timedelta(hours=3),"location":location,
                     "locationCode":lcode,"paqhi":str(pre3)}
     inToPA(preData)

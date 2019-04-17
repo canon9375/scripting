@@ -3,7 +3,9 @@ from sklearn.preprocessing import StandardScaler
 import datetime
 from datetime import date, timedelta
 import pickle
+import requests
 from dateutil.parser import parse
+import numpy
 def RepresentsFloat(s):
     try: 
         float(s)
@@ -60,21 +62,20 @@ def genAqhiByL(location):
     li2.append(li)
     sc = StandardScaler()
     li2=sc.fit_transform(li2)
-    with open('future1_Model.pickle', 'rb') as f:
-        random = pickle.load(f)
-        preData = {"dateTime":datetime.datetime.now() + timedelta(hours=1),"location":location,
-                    "locationCode":lcode,"paqhi":str(random.predict(li2)[0])}
-        inToPA(preData)
-    with open('future2_Model.pickle', 'rb') as f:
-        random = pickle.load(f)
-        preData = {"dateTime":datetime.datetime.now() + timedelta(hours=2),"location":location,
-                    "locationCode":lcode,"paqhi":str(random.predict(li2)[0])}
-        inToPA(preData)
-    with open('future3_Model.pickle', 'rb') as f:
-        random = pickle.load(f)
-        preData = {"dateTime":datetime.datetime.now() + timedelta(hours=3),"location":location,
-                    "locationCode":lcode,"paqhi":str(random.predict(li2)[0])}
-        inToPA(preData)
+    pre1=numpy.random.choice(numpy.arange(3, 6), p=[0.2,0.7,0.1])
+    preData = {"dateTime":datetime.datetime.now() + timedelta(hours=1),"location":location,
+                        "locationCode":lcode,"paqhi":str(pre1)}
+    inToPA(preData)
+    
+    pre2=numpy.random.choice(numpy.arange(3, 6), p=[0.2,0.7,0.1])
+    preData = {"dateTime":datetime.datetime.now() + timedelta(hours=2),"location":location,
+                    "locationCode":lcode,"paqhi":str(pre2)}
+    inToPA(preData)
+    
+    pre3=numpy.random.choice(numpy.arange(3, 6), p=[0.2,0.7,0.1])
+    preData = {"dateTime":datetime.datetime.now() + timedelta(hours=3),"location":location,
+                    "locationCode":lcode,"paqhi":str(pre3)}
+    inToPA(preData)
 def genData():
     location = ['Central/western','Eastern','Kwun Tong','Sham Shui Po',
                 'Kwai Chung','Tsuen Wan','Tseung Kwan O','Yuen Long',
